@@ -32,14 +32,22 @@ function updateLibraryDisplay() {
     const libraryContainer = document.getElementById("libraryContainer");
     libraryContainer.innerHTML = ""; // Clear previous content
 
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, index) => {
         const bookCard = document.createElement("div");
         bookCard.classList.add("bookCard");
 
         const bookInfo = document.createElement("p");
         bookInfo.textContent = book.info();
 
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.addEventListener("click", () => {
+            myLibrary.splice(index, 1);
+            updateLibraryDisplay();
+        })
+
         bookCard.appendChild(bookInfo);
+        bookCard.appendChild(removeButton);
         libraryContainer.appendChild(bookCard);
     })
 }
