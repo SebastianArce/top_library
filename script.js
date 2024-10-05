@@ -26,4 +26,11 @@ function addBookToLibrary() {
     myLibrary.push(book);
 }
 
-console.log(myLibrary);
+// Add event listener to the form 
+document.getElementById("bookForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    addBookToLibrary();
+    console.log(myLibrary);
+});
+
+// console.log(myLibrary);
