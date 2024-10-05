@@ -25,3 +25,5 @@ function addBookToLibrary() {
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
 }
+
+console.log(myLibrary);
