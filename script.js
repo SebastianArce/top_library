@@ -24,7 +24,26 @@ function addBookToLibrary() {
     let read = document.getElementById("read").checked;
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
+    updateLibraryDisplay();
 }
+
+// Update the DOM with the list of books
+function updateLibraryDisplay() {
+    const libraryContainer = document.getElementById("libraryContainer");
+    libraryContainer.innerHTML = ""; // Clear previous content
+
+    myLibrary.forEach((book) => {
+        const bookCard = document.createElement("div");
+        bookCard.classList.add("bookCard");
+
+        const bookInfo = document.createElement("p");
+        bookInfo.textContent = book.info();
+
+        bookCard.appendChild(bookInfo);
+        libraryContainer.appendChild(bookCard);
+    })
+}
+
 
 // Add event listener to the form 
 document.getElementById("bookForm").addEventListener("submit", function(event) {
@@ -33,4 +52,3 @@ document.getElementById("bookForm").addEventListener("submit", function(event) {
     console.log(myLibrary);
 });
 
-// console.log(myLibrary);

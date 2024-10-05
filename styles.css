@@ -57,3 +57,16 @@ form button:hover {
 .checkbox-container label {
     margin-bottom: 0;
 }
+
+#libraryContainer {
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.bookCard {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
