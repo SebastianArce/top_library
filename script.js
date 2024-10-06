@@ -39,6 +39,14 @@ function updateLibraryDisplay() {
         const bookInfo = document.createElement("p");
         bookInfo.textContent = book.info();
 
+        const bookRead = document.createElement("button");
+        bookRead.textContent = book.read ? "Read" : "Not Read";
+        bookRead.classList.add("bookRead");
+        bookRead.addEventListener("click", ()=> {
+            book.read = !book.read;
+            updateLibraryDisplay();
+        })
+
         const removeButton = document.createElement("button");
         removeButton.textContent = "Remove";
         removeButton.addEventListener("click", () => {
@@ -47,6 +55,7 @@ function updateLibraryDisplay() {
         })
 
         bookCard.appendChild(bookInfo);
+        bookCard.appendChild(bookRead);
         bookCard.appendChild(removeButton);
         libraryContainer.appendChild(bookCard);
     })
@@ -60,3 +69,6 @@ document.getElementById("bookForm").addEventListener("submit", function(event) {
     console.log(myLibrary);
 });
 
+document.getElementById("newBookButton").addEventListener("click", function() { 
+    document.getElementById("bookForm").style.display = "block";
+});
