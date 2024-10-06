@@ -25,6 +25,8 @@ function addBookToLibrary() {
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
     updateLibraryDisplay();
+    document.getElementById("bookForm").reset();
+    document.getElementById("modal").style.display = "none";
 }
 
 // Update the DOM with the list of books
@@ -69,6 +71,33 @@ document.getElementById("bookForm").addEventListener("submit", function(event) {
     console.log(myLibrary);
 });
 
-document.getElementById("newBookButton").addEventListener("click", function() { 
-    document.getElementById("bookForm").style.display = "block";
+// Get the modal
+const modal = document.getElementById("modal");
+
+// Get the button that opens the modal
+const newBookButton = document.getElementById("newBookButton");
+
+// Get the <span> element that closes the modal
+const closeButton = document.getElementsByClassName("close-button")[0];
+
+// When the user clicks the button, open the modal
+newBookButton.addEventListener("click", function() {
+    modal.style.display = "block";
 });
+
+// When the user clicks on <span> (x), close the modal
+closeButton.addEventListener("click", function() {
+    modal.style.display = "none";
+})
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener("click", function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+})
+
+
+// document.getElementById("newBookButton").addEventListener("click", function() { 
+//     document.getElementById("bookForm").style.display = "block";
+// });
